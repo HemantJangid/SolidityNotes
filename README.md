@@ -345,3 +345,28 @@ Although u can return array from a function but it is not recommended because of
 Remove elements from array  
 https://www.youtube.com/watch?v=szv2zJcy_Xs&list=PLO5VPQH6OWdVQwpQfw9rZ67O6Pjfo6q-p&index=20
 https://www.youtube.com/watch?v=8i4CChP99XQ&list=PLO5VPQH6OWdVQwpQfw9rZ67O6Pjfo6q-p&index=21
+
+## MAPPING
+
+It is like hashmap / dictionary from other languages
+
+```solidity
+contract Mapping {
+    mapping(address => uint) public balances;
+    mapping(address => mapping(address => boolean)) public isFriend;
+
+    function examples() external {
+        balances[msg.sender] = 123;         // setting the value
+        uint bal = balances[msg.sender];    // getting the value
+
+        uint bal2 = balances[address(1)];   // although we have not the balance for this address it will return us 0 which is the default value
+
+        balances[msg.sender] = 456          // updates the balance
+        balances[msg.sender] += 789         // increase the balance
+
+        delete balances[msg.sender];        // value will be reset to 0
+
+        isFriend[msg.sender][address(this)] = true;
+    }
+}
+```
