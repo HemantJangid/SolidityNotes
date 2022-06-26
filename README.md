@@ -6,7 +6,7 @@ Like other languages solidity also support data types to be defined with values 
 
 ### DATA TYPES DEFINED USING VALUES
 
-```
+```solidity
 bool public b = true;       // true | false
 uint public u = 123;        // unsigned integers only store positive numbers
                             // uint = uint256 0 to 2^256-1
@@ -24,7 +24,7 @@ bytes32 public b32              // stores bytes32 address
 
 While defining functions we need to explicity define some things related to it. Just get the hang of the syntax we will see what all this different keywords mean.
 
-```
+```solidity
 function add(uint x, uint y) external pure returns (uint) {
     return x + y;
 }
@@ -44,7 +44,7 @@ These are the variables which actually store data on blockchain. The variables d
 
 Variables inside a function are local variables and are available only while the function is executing
 
-```
+```solidity
 contract StateVariables {
     uint public u = 123;          // data stored in this variable will be stored on the blockchain and hence it is a state variable
 
@@ -60,7 +60,7 @@ Value defined with u will be available after the contract is deployed and is alw
 
 Variables that are available globally
 
-```
+```solidity
 contract GlobalVariables {
     function globalVars() external view returns () {
         address sender =  msg.sender;         // this variables stores the address that called this function
@@ -74,7 +74,7 @@ contract GlobalVariables {
 
 View functions can read data from blockchain while pure cannot.
 
-```
+```solidity
 contract ViewAndPureFuntions {
     uint public num;
 
@@ -90,7 +90,7 @@ contract ViewAndPureFuntions {
 
 ## COUNTER IN SOLIDITY
 
-```
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.7;
 
@@ -109,7 +109,7 @@ contract Counter {
 
 ## DEFAULT VALUES OF STATE VARIABLES
 
-```
+```solidity
 contract DefaultValues {
     bool public b;          // false
     uint public u;          // 0
@@ -127,7 +127,7 @@ If state variables does not change you can define it as constant. Also defining 
 
 ## IF-ELSE STATEMENTS IN SOLIDITY
 
-```
+```solidity
 contract ifElse {
     function example(uint x) external pure returns (uint) {
         if (x<10) {
@@ -147,7 +147,7 @@ contract ifElse {
 
 ## FOR AND WHILE LOOPS
 
-```
+```solidity
 contract forAndWhileLoops {
     function loops() external pure {
         for (uint i=0; i < 10; i++) {
@@ -187,7 +187,7 @@ keep loops small in solidity because they consume gas
 
 There are 3 ways to throw error require, revert, assert and when an error occurs gas will be refunded and variable updations will be reverted
 
-```
+```solidity
 contract Error {
     function testRequire(uint _i) public pure {
 
@@ -226,7 +226,7 @@ assert is used to check for conditions that should always be equal to true
 
 reuse code before and/or after function
 
-```
+```solidity
 modifier lessThan10(uint _x) {
     require(_x < 10_, "paused");
     _;
@@ -245,7 +245,7 @@ function dec(uint _x) external whenNotPassed(_x) {
 
 Functions that are only called for the first when the contract is deployed
 
-```
+```solidity
 contract Constructor {
     address public owner;
     uint public x;
@@ -259,7 +259,7 @@ contract Constructor {
 
 ## A SMALL SIMPLE CONTRACT
 
-```
+```solidity
 contract Ownable {
     address public owner;
 
@@ -291,7 +291,7 @@ contract Ownable {
 
 Functions in solidity can return multiple outputs and those can be named outputs as well. You can also destructure the outputs
 
-```
+```solidity
 contract FunctionOutputs {
     function returnMany() public pure returns (uint, bool) {
         return (1, true);
