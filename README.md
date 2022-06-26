@@ -316,7 +316,7 @@ contract FunctionOutputs {
 
 ## ARRAYS IN SOLIDITY
 
-```
+```solidity
 contract Array {
     uint[] public nums = [1, 2, 3];         // dynamic array
     uint[3] public numsFixed = [4, 5, 6];   // fixed array of 3 elements, if you have more than 3 elements the contract will not compile
